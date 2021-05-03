@@ -1,72 +1,57 @@
 using System;
-using System.Collections.Generic;
 
-public class Car
+namespace Dealership.Models
 {
-  public string MakeModel;
-  public int Price;
-  public int Miles;
-
-  public Car(string makeModel, int price, int miles)
+  public class Car
   {
-    MakeModel = makeModel;
-    Price = price;
-    Miles = miles;
-  }
+    private string _makeModel;
+    private int _price;
+    private int _miles;
 
-  public bool WorthBuying(int maxPrice)
-  {
-    return (Price <= maxPrice);
-  }
-}
-
-public class Program
-{
-  public static void Main()
-  {
-    Car volkswagen = new Car("1974 Volkswagen Thing", 1100, 368792);
-    Car yugo = new Car("1980 Yugo Koral", 700, 56000);
-    Car ford = new Car("1988 Ford Country Squire", 1400, 239001);
-    Car amc = new Car("1976 AMC Pacer", 400, 198000);
-
-    // Car volkswagen = new Car();
-    // volkswagen.MakeModel = "1974 Volkswagen Thing";
-    // volkswagen.Price = 1100;
-    // volkswagen.Miles = 368792;
-
-    // Car yugo = new Car();
-    // yugo.MakeModel = "1980 Yugo Koral";
-    // yugo.Price = 700;
-    // yugo.Miles = 56000;
-
-    // Car ford = new Car();
-    // ford.MakeModel = "1988 Ford Country Squire";
-    // ford.Price = 1400;
-    // ford.Miles = 239001;
-
-    // Car amc = new Car();
-    // amc.MakeModel = "1976 AMC Pacer";
-    // amc.Price = 400;
-    // amc.Miles = 198000;
-
-    List<Car> Cars = new List<Car>() { volkswagen, yugo, ford, amc };
-
-    Console.WriteLine("Enter maximum price: ");
-    string stringMaxPrice = Console.ReadLine();
-    int maxPrice = int.Parse(stringMaxPrice);
-
-    List<Car> CarsMatchingSearch = new List<Car>(0);
-    foreach (Car automobile in Cars)
+    public Car(string makeModel, int price, int miles)
     {
-      if (automobile.WorthBuying(maxPrice))
-      {
-        CarsMatchingSearch.Add(automobile);
-      }
+      _makeModel = makeModel;
+      _price = price;
+      _miles = miles;
     }
-    foreach (Car automobile in CarsMatchingSearch)
+
+    public string GetMakeModel()
     {
-      Console.WriteLine(automobile.MakeModel);
+      return _makeModel;
+    }
+
+    public bool WorthBuying(int maxPrice)
+    {
+      return (_price <= maxPrice);
     }
   }
-
 }
+// public class Program
+// {
+// public static void Main()
+// {
+//   Car volkswagen = new Car("1974 Volkswagen Thing", 1100, 368792);
+//   Car yugo = new Car("1980 Yugo Koral", 700, 56000);
+//   Car ford = new Car("1988 Ford Country Squire", 1400, 239001);
+//   Car amc = new Car("1976 AMC Pacer", 400, 198000);
+
+//   List<Car> Cars = new List<Car>() { volkswagen, yugo, ford, amc };
+
+//   Console.WriteLine("Enter maximum price: ");
+//   string stringMaxPrice = Console.ReadLine();
+//   int maxPrice = int.Parse(stringMaxPrice);
+
+//   List<Car> CarsMatchingSearch = new List<Car>(0);
+//   foreach (Car automobile in Cars)
+//   {
+//     if (automobile.WorthBuying(maxPrice))
+//     {
+//       CarsMatchingSearch.Add(automobile);
+//     }
+//   }
+//   foreach (Car automobile in CarsMatchingSearch)
+//   {
+//     Console.WriteLine(automobile.MakeModel);
+//   }
+// }
+// }
